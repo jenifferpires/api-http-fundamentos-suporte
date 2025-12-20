@@ -78,9 +78,8 @@ Authorization: Bearer token_expirado
 
 Resposta
 
-```http
 401 Unauthorized
-```
+
 
 
 Diagnóstico do suporte
