@@ -114,6 +114,7 @@ Essa distinção é fundamental para:
 ## Exemplo real de suporte
 
 ### Requisição
+
 ```http
 POST /api/clientes HTTP/1.1
 Content-Type: application/json
@@ -121,11 +122,14 @@ Content-Type: application/json
 {
   "email": "cliente@empresa.com"
 }
+
+
+```
 Resposta
-http
-
-
+```http
 400 Bad Request
+```
+
 📌 Diagnóstico:
 
 Campo obrigatório ausente (nome)
