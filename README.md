@@ -1,112 +1,151 @@
 # API & HTTP – Fundamentos para Suporte Técnico
 
-Este repositório foi criado para consolidar o entendimento prático de **HTTP, APIs REST e diagnóstico de integrações**, com foco no **dia a dia de Suporte à Aplicação e Sustentação de Sistemas**.
+Este repositório foi criado com o objetivo de consolidar e demonstrar conhecimentos práticos sobre **HTTP, APIs e diagnóstico de erros**, com foco direto na **rotina de suporte técnico, sustentação de aplicações e análise de incidentes**.
 
-Aqui não há apenas teoria: todos os conceitos são explicados a partir de **cenários reais de erro**, comuns em ambientes produtivos.
-
----
-
-## 🎯 Objetivo
-
-Capacitar profissionais de suporte a:
-
-- Entender como APIs funcionam
-- Diagnosticar erros de integração
-- Interpretar respostas HTTP
-- Identificar falhas de payload, headers e autenticação
-- Comunicar problemas de forma técnica e objetiva
+O conteúdo é organizado de forma **didática**, mas sempre conectado a **cenários reais enfrentados por times de suporte**, integrações de sistemas e troubleshooting de APIs.
 
 ---
 
-## 📌 Estrutura do Repositório
+## 🎯 Objetivo do Repositório
 
-### 01 – HTTP Básico
+- Compreender como funciona a comunicação HTTP
+- Entender APIs do ponto de vista de **quem dá suporte**
+- Diagnosticar erros de integração com mais rapidez
+- Interpretar corretamente **status codes, headers e payloads**
+- Servir como material de estudo e também **portfólio técnico**
+
+Este repositório não tem foco em desenvolvimento avançado de APIs, mas sim em **análise, leitura e diagnóstico**, habilidades essenciais para profissionais de suporte e sustentação.
+
+---
+
+## 🧩 Estrutura do Conteúdo
+
+O material está dividido em módulos progressivos:
+
+### 📘 01 – HTTP Básico
 📁 `01-http-basico/`
 
+Introduz os conceitos fundamentais:
 - O que é HTTP
+- Como funciona uma requisição e uma resposta
 - Comunicação cliente ↔ servidor
-- Conceitos essenciais para leitura de logs e requisições
+- Onde normalmente surgem problemas em produção
+
+Arquivo:
+- `conceitos-http.md`
 
 ---
 
-### 02 – Métodos HTTP
+### 📗 02 – Métodos HTTP
 📁 `02-metodos-http/`
 
-- GET, POST, PUT, PATCH, DELETE
-- Quando usar cada método
-- Erros comuns por uso incorreto do método
+Explica os principais métodos usados em APIs:
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
+
+Com foco em:
+- Quando cada método deve ser usado
+- Erros comuns causados por método incorreto
+- Impacto direto no suporte técnico
+
+Arquivo:
+- `metodos.md`
 
 ---
 
-### 03 – Status Codes
+### 📙 03 – Status Codes HTTP
 📁 `03-status-codes/`
 
-- Diferença entre erros 2xx, 4xx e 5xx
-- Como interpretar erros como:
-  - 400 Bad Request
-  - 401 Unauthorized
-  - 403 Forbidden
-  - 404 Not Found
-  - 500 Internal Server Error
-- Diagnóstico prático para suporte
+Um dos módulos mais importantes para suporte.
+
+Aborda:
+- Diferença entre erros 4xx e 5xx
+- Significado dos principais status codes
+- Como interpretar rapidamente uma falha
+- O que é erro de cliente x erro de servidor
+
+Arquivo:
+- `status-codes.md`
 
 ---
 
-### 04 – Headers e Payload
+### 📕 04 – Headers e Payload
 📁 `04-headers-e-payload/`
 
-- Headers HTTP mais comuns
-- Authorization e Content-Type
-- Erros frequentes em integrações
-- Payloads corretos vs inválidos
+Onde grande parte dos erros de integração acontecem.
+
+Conteúdo:
+- Headers HTTP (Authorization, Content-Type, etc.)
+- Payload e estrutura de dados
+- Erros comuns de autenticação e validação
+- Relação direta entre headers incorretos e falhas de requisição
+
+Arquivo:
+- `headers-payload.md`
 
 ---
 
-### 05 – APIs na Prática
+### 📒 05 – APIs na Prática
 📁 `05-apis-na-pratica/`
 
-- Exemplos reais de requisições HTTP
-- Requisição documentada (HTTP puro)
-- Exemplo de request usando Python (`requests`)
-- Interpretação da resposta
+Demonstra exemplos reais de requisição:
+- Estrutura completa de uma chamada HTTP
+- Exemplo documentado em Markdown
+- Exemplo prático em Python
+
+Arquivos:
+- `exemplo-request.md`
+- `exemplo-request.py`
+
+Este módulo conecta teoria e prática, como acontece no dia a dia do suporte.
 
 ---
 
-### 06 – Erros e Diagnóstico
+### 📓 06 – Erros e Diagnóstico
 📁 `06-erros-e-diagnostico/`
 
-- Fluxo de diagnóstico em suporte
-- Como investigar erros de API
-- Como diferenciar erro do cliente vs erro do servidor
-- Comunicação técnica com cliente e desenvolvimento
+Foco total em troubleshooting.
+
+Aborda:
+- Como analisar um erro de API
+- Ordem correta de verificação (método, endpoint, headers, payload)
+- Diferença entre falha de integração e bug
+- Comunicação clara com clientes e times de desenvolvimento
+
+Arquivo:
+- `diagnostico-suporte.md`
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠 Público-Alvo
 
-- HTTP / HTTPS
-- APIs REST
-- JSON
-- Python
-- Git
-
----
-
-## 👩‍💻 Sobre
-
-Este repositório faz parte de um conjunto de estudos práticos voltados para atuação em:
-
-- Suporte à Aplicação
-- Sustentação de Sistemas
-- Integrações e APIs
-
-GitHub: https://github.com/jenifferpires  
-LinkedIn: https://www.linkedin.com/in/jeniffer-pires
+Este repositório é voltado para:
+- Suporte Técnico
+- Sustentação de Aplicações
+- Analistas de Sistemas
+- Profissionais que lidam com APIs e integrações
+- Pessoas em transição para áreas técnicas
 
 ---
 
-## ✅ Conclusão
+## 🚀 Como usar este repositório
 
-Entender APIs e HTTP é essencial para qualquer profissional de suporte moderno.
+- Leia os módulos em ordem
+- Utilize os exemplos práticos como referência
+- Consulte durante atendimentos e análises de incidentes
+- Use como material de revisão para entrevistas técnicas
+
+---
+
+## 📌 Considerações finais
+
+Dominar HTTP e APIs do ponto de vista de suporte técnico permite:
+- Reduzir tempo de diagnóstico
+- Evitar abertura de bugs desnecessários
+- Comunicar problemas com mais clareza
+- Atuar de forma mais estratégica em incidentes
 
 Este repositório representa um aprendizado **prático, estruturado e orientado a problemas reais** enfrentados em ambientes de produção.
