@@ -65,7 +65,6 @@ Exemplos:
 ## Exemplo real de diagnóstico
 
 ### Requisição
-```http
 POST /api/pagamentos HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer token_expirado
@@ -75,8 +74,14 @@ Authorization: Bearer token_expirado
   "cliente_id": 123
 }
 
+
+
 Resposta
+
+```http
 401 Unauthorized
+```
+
 
 Diagnóstico do suporte
 
@@ -87,6 +92,8 @@ Método correto
 Payload válido
 
 Token expirado
+
+
 
 📌 Conclusão: erro de autenticação, não é bug.
 
@@ -131,7 +138,9 @@ Evite interpretações subjetivas
 
 Exemplo:
 
-API retorna 500 ao realizar POST em /api/pagamentos com payload válido. Erro reproduzido em homologação às 14:32.
+API retorna 500 ao realizar POST em /api/pagamentos com payload válido. 
+Erro reproduzido em homologação às 14:32.
+
 
 Conclusão:
 
