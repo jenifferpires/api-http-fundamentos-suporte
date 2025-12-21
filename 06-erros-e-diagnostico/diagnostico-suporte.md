@@ -1,0 +1,160 @@
+# Diagnóstico de Erros em APIs – Visão de Suporte Técnico
+
+## O papel do suporte no diagnóstico de APIs
+
+O suporte técnico atua como o **primeiro nível de investigação** quando ocorre uma falha em integrações ou consumo de APIs.
+
+Seu papel não é apenas registrar o erro, mas:
+- Reproduzir o problema
+- Identificar a origem da falha
+- Classificar corretamente o incidente
+- Direcionar para o time certo (cliente, infraestrutura ou desenvolvimento)
+
+---
+
+## Fluxo mental de diagnóstico em suporte
+
+Antes de abrir um bug, o suporte deve validar:
+
+1. O serviço está no ar?
+2. O endpoint está correto?
+3. O método HTTP está correto?
+4. Os headers estão corretos?
+5. O payload está no formato esperado?
+6. O erro é reproduzível?
+
+Esse fluxo evita retrabalho e chamados indevidos.
+
+---
+
+## Análise por categoria de erro
+
+### Erros 4xx – Problema na requisição
+
+Indicam falhas do cliente ou da integração.
+
+Exemplos comuns:
+- 400 Bad Request → payload inválido
+- 401 Unauthorized → token inválido ou expirado
+- 403 Forbidden → permissão insuficiente
+- 404 Not Found → endpoint ou recurso inexistente
+
+📌 Ação do suporte:
+- Validar documentação
+- Conferir headers e payload
+- Orientar o cliente ou integrador
+
+---
+
+### Erros 5xx – Problema no servidor
+
+Indicam falha interna da aplicação.
+
+Exemplos:
+- 500 Internal Server Error
+- 502 Bad Gateway
+- 503 Service Unavailable
+
+📌 Ação do suporte:
+- Verificar status do serviço
+- Conferir logs (se houver acesso)
+- Abrir incidente para desenvolvimento ou infraestrutura
+
+---
+
+## Exemplo real de diagnóstico
+
+### Requisição
+```
+POST /api/pagamentos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer token_expirado
+
+{
+  "valor": 100.00,
+  "cliente_id": 123
+}
+
+```
+
+Resposta
+
+```bash
+401 Unauthorized
+```
+
+
+
+Diagnóstico do suporte
+
+Endpoint correto
+
+Método correto
+
+Payload válido
+
+Token expirado
+
+
+
+📌 Conclusão: erro de autenticação, não é bug.
+
+Como documentar corretamente um incidente
+
+Um bom chamado técnico deve conter:
+
+Endpoint
+
+Método HTTP
+
+Headers relevantes (sem expor dados sensíveis)
+
+Payload enviado
+
+Status code retornado
+
+Mensagem de erro
+
+Horário do ocorrido
+
+Ambiente (produção, homologação)
+
+Isso acelera a resolução e evita retrabalho.
+
+Comunicação com o cliente
+
+O suporte deve traduzir o erro técnico para uma linguagem clara:
+
+❌ “Erro 401”
+
+✅ “A requisição falhou porque o token de acesso está expirado. É necessário gerar um novo token.”
+
+Comunicação com o time de desenvolvimento
+
+Já para o time técnico:
+
+Seja objetivo
+
+Inclua evidências
+
+Evite interpretações subjetivas
+
+Exemplo:
+
+API retorna 500 ao realizar POST em /api/pagamentos com payload válido. 
+Erro reproduzido em homologação às 14:32.
+
+
+Conclusão:
+
+Um bom suporte técnico:
+
+Entende HTTP e APIs
+
+Sabe interpretar status codes
+
+Diagnostica antes de escalar
+
+Comunica com clareza
+
+Esse conhecimento reduz incidentes, melhora a experiência do cliente e fortalece o produto.
