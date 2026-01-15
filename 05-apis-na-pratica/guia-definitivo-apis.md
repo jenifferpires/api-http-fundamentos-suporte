@@ -78,34 +78,34 @@ Content-Type: application/json
 ### Diagnóstico e Ações:  
 
 #### Cenário A: 
-Resposta 401 Unauthorized  
+Resposta `401 Unauthorized`
 
 Diagnóstico: Problema de autenticação (Token expirado).  
 Ação: Orientar cliente a renovar o login/token.
 
 #### Cenário B:   
-Resposta 400 Bad Request 
+Resposta `400 Bad Request`
 
 Diagnóstico: Payload inválido ou dado fora do formato esperado.  
 Ação: Validar se o e-mail está correto ou se falta algum campo obrigatório.  
 
 #### Cenário C:  
-Resposta 200 OK   
+Resposta `200 OK` 
 
 Diagnóstico: Sucesso.  
 O problema relatado pode ser visual (cache no navegador do cliente). 
 
-### 📄 6. Formatos de Dados (JSON vs XML). 
-JSON: Padrão das APIs REST.  
+## 📄 6. Formatos de Dados (JSON vs XML). 
+##### JSON: Padrão das APIs REST.  
 Leve e fácil de ler.  
 Usa { "chave": "valor" }. 
 
-XML: Padrão das APIs SOAP.   
+##### XML: Padrão das APIs SOAP.   
 Mais pesado e rígido.   
 Usa <tags></tags>.   
 Frequentemente encontrado em sistemas bancários legados.  
 
-✅ 7. Por que essa análise é importante?  
+## ✅ 7. Por que essa análise é importante?  
 
 Dominar a leitura de APIs permite ao suporte:  
 
