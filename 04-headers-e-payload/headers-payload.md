@@ -152,23 +152,21 @@ Resposta
 401 Unauthorized
 ```
 
-📌 Diagnóstico:
+📌 Diagnóstico:  
 
-Endpoint correto.
-Método correto.
-Payload válido.
-Erro no token de autenticação (Authorization).
+Endpoint correto.  
+Método correto.  
+Payload válido.  
+Erro no token de autenticação (Authorization).  
 
-Conclusão:
+Conclusão:  
 
-Headers e payload são fontes frequentes de erro em aplicações e integrações.
+Headers e payload são fontes frequentes de erro em aplicações e integrações.  
 
-Entender esses conceitos permite ao suporte:
+Entender esses conceitos permite ao suporte: 
 
-Diagnosticar falhas com mais precisão. 
+Diagnosticar falhas com mais precisão.  
+Evitar abertura desnecessária de bugs.  
+Comunicar problemas de forma clara com clientes e desenvolvedores.  
 
-Evitar abertura desnecessária de bugs. 
-
-Comunicar problemas de forma clara com clientes e desenvolvedores. 
-
-Esse conhecimento é essencial para quem trabalha com APIs e sistemas integrados.
+Esse conhecimento é essencial para quem trabalha com APIs e sistemas integrados.  
