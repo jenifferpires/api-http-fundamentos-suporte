@@ -1,17 +1,17 @@
-# APIs na prática – Entendendo uma requisição real em suporte
+# APIs na prática – Entendendo uma requisição real em suporte.
 
-## Objetivo deste exemplo
+## Objetivo deste exemplo:
 
 Este exemplo demonstra uma **requisição real a uma API**, explicada do ponto de vista de **suporte técnico**.
 
 A ideia não é apenas mostrar código, mas ensinar:
-- Como ler uma requisição
-- Como interpretar a resposta
-- Como diagnosticar erros comuns
+- Como ler uma requisição.
+- Como interpretar a resposta.
+- Como diagnosticar erros comuns.
 
 ---
 
-## Cenário de suporte
+## Cenário de suporte:
 
 Um cliente relata que **não consegue atualizar os dados do seu cadastro** no sistema.
 
@@ -35,93 +35,85 @@ Content-Type: application/json
 ```
 
 
-Análise da requisição (visão de suporte)
-Método
-PUT → atualização de recurso existente
+Análise da requisição (visão de suporte) .  
+Método    
+PUT → atualização de recurso existente  
 
-Endpoint
-/api/clientes/123
+Endpoint  
+/api/clientes/123   
+Recurso: clientes   
+ID: 123   
 
-Recurso: clientes
+Headers 
+Authorization presente   
+Content-Type correto (JSON)   
 
-ID: 123
+Payload    
+Estrutura válida   
+Campos esperados presentes  
 
-Headers
-Authorization presente
+📌 Até aqui, a requisição está correta. 
 
-Content-Type correto (JSON)
-
-Payload
-Estrutura válida
-
-Campos esperados presentes
-
-📌 Até aqui, a requisição está correta.
-
-Possível resposta de sucesso
+Possível resposta de sucesso: 
 
 ```http
 
 200 OK
 ```
 
-📌 Diagnóstico:
+📌 Diagnóstico: 
 
-Atualização realizada com sucesso
+Atualização realizada com sucesso.  
+Nenhuma ação necessária por parte do suporte. 
 
-Nenhuma ação necessária por parte do suporte
+Possível resposta de erro (exemplo real).  
+```http
+401 Unauthorized 
+```
 
-Possível resposta de erro (exemplo real)
+📌 Diagnóstico: 
 
-401 Unauthorized
+Token inválido ou expirado 
+Problema de autenticação 
+Não é erro de payload nem de endpoint 
 
-📌 Diagnóstico:
+📌 Ação do suporte: 
 
-Token inválido ou expirado
+Orientar cliente a renovar autenticação 
+Validar tempo de expiração do token  
 
-Problema de autenticação
-
-Não é erro de payload nem de endpoint
-
-📌 Ação do suporte:
-
-Orientar cliente a renovar autenticação
-Validar tempo de expiração do token
-
-Outro exemplo de erro comum
-Resposta
+Outro exemplo de erro comum: 
+Resposta 
 
 ```http
 400 Bad Request
 ```
 
-📌 Diagnóstico:
+📌 Diagnóstico: 
 
-Payload inválido
+Payload inválido  
+Campo obrigatório ausente ou formato incorreto  
 
-Campo obrigatório ausente ou formato incorreto
+📌 Ação do suporte:  
 
-📌 Ação do suporte:
+Validar dados enviados  
+Orientar correção do payload  
 
-Validar dados enviados
+Por que esse tipo de análise é importante? 
+Esse tipo de leitura permite ao suporte: 
 
-Orientar correção do payload
+Resolver chamados mais rapidamente  
 
-Por que esse tipo de análise é importante?
-Esse tipo de leitura permite ao suporte:
+Evitar abertura desnecessária de bugs  
 
-Resolver chamados mais rapidamente
+Comunicar problemas com clareza para o time técnico  
 
-Evitar abertura desnecessária de bugs
+Ganhar autonomia e confiança técnica  
 
-Comunicar problemas com clareza para o time técnico
+Conclusão:  
+Analisar uma requisição HTTP de ponta a ponta é uma das habilidades mais importantes em suporte a aplicações.  
 
-Ganhar autonomia e confiança técnica
-
-Conclusão
-Analisar uma requisição HTTP de ponta a ponta é uma das habilidades mais importantes em suporte a aplicações.
-
-Com esse conhecimento, o suporte deixa de apenas repassar erros e passa a diagnosticar e direcionar soluções.
+Com esse conhecimento, o suporte deixa de apenas repassar erros e passa a diagnosticar e direcionar soluções.  
 
 
 ---

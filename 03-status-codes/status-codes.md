@@ -111,7 +111,7 @@ Essa distinção é fundamental para:
 
 ---
 
-## Exemplo real de suporte
+## Exemplo real de suporte:
 
 ### Requisição
 
@@ -130,22 +130,21 @@ Resposta
 400 Bad Request
 ```
 
-📌 Diagnóstico:
+📌 Diagnóstico:  
 
-Campo obrigatório ausente (nome)
+Campo obrigatório ausente (nome).  
+Erro no payload enviado.  
 
-Erro no payload enviado
+Conclusão:  
+Os status codes HTTP são uma das ferramentas mais importantes para suporte técnico. 
 
-Conclusão
-Os status codes HTTP são uma das ferramentas mais importantes para suporte técnico.
+Eles permitem:  
 
-Eles permitem:
+Diagnóstico rápido.  
 
-Diagnóstico rápido
+Identificação da origem do erro.  
 
-Identificação da origem do erro
-
-Comunicação clara com o cliente e com o time técnico
+Comunicação clara com o cliente e com o time técnico.  
 
 Entender status codes é essencial para atuar com aplicações web, APIs e integrações.
 

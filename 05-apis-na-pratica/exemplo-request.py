@@ -64,27 +64,27 @@ except requests.exceptions.RequestException as error:
     print("Erro ao tentar se comunicar com a API.")
     print(error)
 
-🧠 EXPLICAÇÃO CONCEITUAL
-1️⃣ import requests
+🧠 EXPLICAÇÃO CONCEITUAL (ligando com tudo que você viu) 
+1️⃣ import requests 
 
-Biblioteca usada para fazer requisições HTTP em Python.
+Biblioteca usada para fazer requisições HTTP em Python.  
 
-📌 Em suporte:
+📌 Em suporte: 
 
-Muito usada para testar APIs
+Muito usada para testar APIs 
 
-Simular chamadas de app ou integração
+Simular chamadas de app ou integração 
 
-Reproduzir erros reportados por clientes
+Reproduzir erros reportados por clientes 
 
-2️⃣ URL (endpoint)
+2️⃣ URL (endpoint) 
+
 url = "https://api.sistema.com/api/clientes/123"
 
+✔ Recurso: clientes 
+✔ ID: 123 
 
-✔ Recurso: clientes
-✔ ID: 123
-
-👉 Se isso estiver errado → 404
+👉 Se isso estiver errado → 404 
 
 3️⃣ Headers
 headers = {
@@ -135,16 +135,15 @@ O if / elif simula exatamente o raciocínio:
 5xx → erro interno
 
 
-8️⃣ Tratamento de exceções
-except requests.exceptions.RequestException as error:
+8️⃣ Tratamento de exceções 
+except requests.exceptions.RequestException as error: 
 
 
-📌 Captura:
+📌 Captura: 
 
-API fora do ar
+API fora do ar 
+Timeout 
+DNS 
+Falha de rede. 
 
-Timeout
-
-DNS
-
-Falha de rede.
+👉 Cenário real de suporte / infraestrutura. 

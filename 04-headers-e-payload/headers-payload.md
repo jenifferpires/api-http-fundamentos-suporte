@@ -9,147 +9,135 @@ Em suporte técnico, erros de headers estão entre as **principais causas de fal
 
 ---
 
-## Headers mais comuns em aplicações
+## Headers mais comuns em aplicações:
 
 ### Authorization
 
 Usado para **autenticação e autorização** da requisição.
 
-Exemplo:
+Exemplo: 
 ```http
 Authorization: Bearer token_exemplo
+```
 
+📌 Problemas comuns em suporte:  
 
-📌 Problemas comuns em suporte:
+Token expirado.
+Token inválido.
+Header não enviado.
+Token enviado no formato errado.
 
-Token expirado
+📌 Resultados mais comuns:  
 
-Token inválido
-
-Header não enviado
-
-Token enviado no formato errado
-
-📌 Resultados mais comuns:
-
-401 Unauthorized
-
-403 Forbidden
+401 Unauthorized 
+403 Forbidden 
 
 Content-Type
 
 Indica o formato do corpo da requisição (payload).
 
-Exemplo:
-
+Exemplo: 
+```http
 Content-Type: application/json
-
+```
 
 📌 Problemas comuns:
 
-Content-Type ausente
+Content-Type ausente.
+Content-Type incorreto.
+Backend esperando JSON e recebendo outro formato.
 
-Content-Type incorreto
+📌 Resultado comum: 
 
-Backend esperando JSON e recebendo outro formato
+400 Bad Request  
 
-📌 Resultado comum:
+Outros headers frequentes:
 
-400 Bad Request
+Accept  
+User-Agent  
+Cache-Control  
 
-Outros headers frequentes
+📌 Em suporte, esses headers ajudam a identificar:  
 
-Accept
+Tipo de cliente (app mobile, navegador, integração externa).  
+Versão da aplicação.  
+Problemas relacionados a cache ou comportamento inesperado.  
 
-User-Agent
-
-Cache-Control
-
-📌 Em suporte, esses headers ajudam a identificar:
-
-Tipo de cliente (app mobile, navegador, integração externa)
-
-Versão da aplicação
-
-Problemas relacionados a cache ou comportamento inesperado
-
-O que é Payload?
+O que é Payload?  
 
 Payload é o conteúdo principal enviado na requisição, geralmente em JSON.
 Ele é utilizado principalmente nos métodos:
 
 POST
-
 PUT
-
 PATCH
 
-Exemplo de payload correto
+Exemplo de payload correto: 
+
+```http
 {
   "nome": "Empresa X",
   "email": "contato@empresa.com",
   "ativo": true
 }
 
-Erros comuns em payload (muito frequentes em suporte)
-Campo obrigatório ausente
+Erros comuns em payload (muito frequentes em suporte):
+Campo obrigatório ausente 
+
+```http
 {
   "email": "contato@empresa.com"
-}
+} 
+```
 
+📌 Resultado comum: 
 
-📌 Resultado comum:
-
-400 Bad Request
+400 Bad Request. 
 
 Tipo de dado incorreto
 {
   "ativo": "true"
 }
 
-
 📌 Se o backend espera boolean:
 
-Pode gerar erro de validação
+Pode gerar erro de validação.
+Pode gerar comportamento inesperado.
+Estrutura diferente da esperada.
 
-Pode gerar comportamento inesperado
-
-Estrutura diferente da esperada
+```http 
 {
   "cliente": {
     "nome": "Empresa X"
   }
 }
+```
 
+📌 Se a API espera o campo no nível raiz: 
 
-📌 Se a API espera o campo no nível raiz:
+Erro de validação. 
+Erro de mapeamento no backend. 
+Relação entre Headers, Payload e Suporte Técnico. 
 
-Erro de validação
+Em muitos chamados de suporte: 
 
-Erro de mapeamento no backend
+Endpoint está correto.
 
-Relação entre Headers, Payload e Suporte Técnico
+Método HTTP está correto.
 
-Em muitos chamados de suporte:
-
-Endpoint está correto
-
-Método HTTP está correto
-
-Headers ou payload estão incorretos
+Headers ou payload estão incorretos.
 
 Por isso, o suporte técnico deve sempre validar nesta ordem:
 
-Método HTTP
+Método HTTP 
+Endpoint  
+Headers  
+Payload  
 
-Endpoint
+Exemplo real de diagnóstico em suporte:  
 
-Headers
-
-Payload
-
-Exemplo real de diagnóstico em suporte
-Requisição
+Requisição 
+```http
 POST /api/clientes HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer token_expirado
@@ -157,32 +145,30 @@ Authorization: Bearer token_expirado
 {
   "nome": "Empresa X",
   "email": "contato@empresa.com"
-}
-
-Resposta
+} 
+```
+Resposta 
+```http
 401 Unauthorized
-
+```
 
 📌 Diagnóstico:
 
-Endpoint correto
+Endpoint correto.
+Método correto.
+Payload válido.
+Erro no token de autenticação (Authorization).
 
-Método correto
+Conclusão:
 
-Payload válido
+Headers e payload são fontes frequentes de erro em aplicações e integrações.
 
-Erro no token de autenticação (Authorization)
+Entender esses conceitos permite ao suporte:
 
-Conclusão :
+Diagnosticar falhas com mais precisão. 
 
-Headers e payload são fontes frequentes de erro em integrações e APIs.
+Evitar abertura desnecessária de bugs. 
 
-Dominar esses conceitos permite ao suporte técnico:
+Comunicar problemas de forma clara com clientes e desenvolvedores. 
 
-Diagnosticar falhas com mais precisão
-
-Evitar abertura desnecessária de bugs
-
-Comunicar problemas de forma clara com clientes e desenvolvedores
-
-Esse conhecimento é essencial para quem trabalha com APIs, integrações e suporte técnico.
+Esse conhecimento é essencial para quem trabalha com APIs e sistemas integrados.
