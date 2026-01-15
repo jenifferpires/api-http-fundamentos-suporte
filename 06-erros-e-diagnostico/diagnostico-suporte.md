@@ -77,7 +77,7 @@ Authorization: Bearer token_expirado
 
 ```
 
-Resposta
+Resposta  
 
 ```bash
 401 Unauthorized
@@ -85,76 +85,61 @@ Resposta
 
 
 
-Diagnóstico do suporte
+Diagnóstico do suporte:  
 
-Endpoint correto
-
-Método correto
-
-Payload válido
-
-Token expirado
+Endpoint correto  
+Método correto  
+Payload válido  
+Token expirado  
 
 
 
-📌 Conclusão: erro de autenticação, não é bug.
+📌 Conclusão: erro de autenticação, não é bug.  
 
-Como documentar corretamente um incidente
+Como documentar corretamente um incidente.   
 
-Um bom chamado técnico deve conter:
+Um bom chamado técnico deve conter:  
 
-Endpoint
+Endpoint  
+Método HTTP  
+Headers relevantes (sem expor dados sensíveis)  
+Payload enviado  
+Status code retornado  
+Mensagem de erro  
+Horário do ocorrido  
+Ambiente (produção, homologação)  
 
-Método HTTP
+Isso acelera a resolução e evita retrabalho. 
 
-Headers relevantes (sem expor dados sensíveis)
+Comunicação com o cliente.  
 
-Payload enviado
+O suporte deve traduzir o erro técnico para uma linguagem clara:   
 
-Status code retornado
+❌ “Erro 401”  
 
-Mensagem de erro
+✅ “A requisição falhou porque o token de acesso está expirado. É necessário gerar um novo token.”  
 
-Horário do ocorrido
+Comunicação com o time de desenvolvimento. 
 
-Ambiente (produção, homologação)
+Já para o time técnico:  
 
-Isso acelera a resolução e evita retrabalho.
+Seja objetivo.   
+Inclua evidências.   
+Evite interpretações subjetivas.   
 
-Comunicação com o cliente
+Exemplo:  
 
-O suporte deve traduzir o erro técnico para uma linguagem clara:
-
-❌ “Erro 401”
-
-✅ “A requisição falhou porque o token de acesso está expirado. É necessário gerar um novo token.”
-
-Comunicação com o time de desenvolvimento
-
-Já para o time técnico:
-
-Seja objetivo
-
-Inclua evidências
-
-Evite interpretações subjetivas
-
-Exemplo:
-
-API retorna 500 ao realizar POST em /api/pagamentos com payload válido. 
-Erro reproduzido em homologação às 14:32.
+API retorna 500 ao realizar POST em /api/pagamentos com payload válido.  
+Erro reproduzido em homologação às 14:32.  
 
 
-Conclusão:
+Conclusão:  
 
 Um bom suporte técnico:
 
-Entende HTTP e APIs
+Entende HTTP e APIs.  
+Sabe interpretar status codes.  
+Diagnostica antes de escalar.  
+Comunica com clareza.  
 
-Sabe interpretar status codes
-
-Diagnostica antes de escalar
-
-Comunica com clareza
-
-Esse conhecimento reduz incidentes, melhora a experiência do cliente e fortalece o produto.
+Esse conhecimento reduz incidentes, melhora a experiência do cliente e fortalece o produto.  

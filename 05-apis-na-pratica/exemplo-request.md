@@ -73,9 +73,9 @@ Possível resposta de erro (exemplo real).
 
 📌 Diagnóstico: 
 
-Token inválido ou expirado 
-Problema de autenticação 
-Não é erro de payload nem de endpoint 
+Token inválido ou expirado  
+Problema de autenticação  
+Não é erro de payload nem de endpoint  
 
 📌 Ação do suporte: 
 
@@ -94,26 +94,24 @@ Resposta
 Payload inválido  
 Campo obrigatório ausente ou formato incorreto  
 
-📌 Ação do suporte:  
+📌 Ação do suporte:   
 
-Validar dados enviados  
-Orientar correção do payload  
+Validar dados enviados   
+Orientar correção do payload   
 
-Por que esse tipo de análise é importante? 
-Esse tipo de leitura permite ao suporte: 
+Por que esse tipo de análise é importante?  
 
-Resolver chamados mais rapidamente  
+Esse tipo de leitura permite ao suporte:  
 
-Evitar abertura desnecessária de bugs  
+Resolver chamados mais rapidamente.   
+Evitar abertura desnecessária de bugs.  
+Comunicar problemas com clareza para o time técnico.   
+Ganhar autonomia e confiança técnica. 
 
-Comunicar problemas com clareza para o time técnico  
+Conclusão:   
+Analisar uma requisição HTTP de ponta a ponta é uma das habilidades mais importantes em suporte a aplicações.   
 
-Ganhar autonomia e confiança técnica  
-
-Conclusão:  
-Analisar uma requisição HTTP de ponta a ponta é uma das habilidades mais importantes em suporte a aplicações.  
-
-Com esse conhecimento, o suporte deixa de apenas repassar erros e passa a diagnosticar e direcionar soluções.  
+Com esse conhecimento, o suporte deixa de apenas repassar erros e passa a diagnosticar e direcionar soluções.   
 
 
 ---

@@ -126,24 +126,24 @@ response.status_code
 
 7️⃣ Tratamento de erros
 
-O if / elif simula exatamente o raciocínio:
+O if / elif simula exatamente o raciocínio: 
 
-2xx → sucesso
+2xx → sucesso 
 
-4xx → erro de requisição/autenticação
+4xx → erro de requisição/autenticação 
 
-5xx → erro interno
-
-
-8️⃣ Tratamento de exceções 
-except requests.exceptions.RequestException as error: 
+5xx → erro interno 
 
 
-📌 Captura: 
+8️⃣ Tratamento de exceções  
+except requests.exceptions.RequestException as error:  
 
-API fora do ar 
-Timeout 
-DNS 
-Falha de rede. 
 
-👉 Cenário real de suporte / infraestrutura. 
+📌 Captura:  
+
+API fora do ar  
+Timeout  
+DNS  
+Falha de rede.  
+
+👉 Cenário real de suporte / infraestrutura.  
