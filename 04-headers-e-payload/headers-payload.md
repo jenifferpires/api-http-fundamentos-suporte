@@ -81,8 +81,8 @@ Exemplo de payload correto:
   "ativo": true
 }
 ```
-Erros comuns em payload (muito frequentes em suporte): 
-Campo obrigatório ausente. 
+Erros comuns em payload (muito frequentes em suporte):   
+Campo obrigatório ausente.   
 
 ```http
 {
