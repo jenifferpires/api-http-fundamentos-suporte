@@ -1,186 +1,51 @@
-# Métodos HTTP – Como e quando usar (visão de Suporte).  
+# Métodos HTTP – Como e quando usar (visão de Suporte)
 
-## O que são métodos HTTP?  
+## O que são métodos HTTP?
 
-Os métodos HTTP indicam **qual ação o cliente deseja executar** sobre um recurso no servidor.  
-
-Em suporte a aplicações, entender os métodos HTTP ajuda a responder perguntas como:  
-- O cliente está apenas consultando dados?  
-- Está tentando criar algo novo?  
-- Está atualizando ou excluindo informações?  
-
-Cada método tem um propósito específico, e o uso incorreto geralmente gera erros.  
+Os métodos HTTP indicam **qual ação o cliente deseja executar** sobre um recurso no servidor. Em suporte a aplicações, entender esses métodos ajuda a identificar a intenção do usuário e onde o fluxo pode ter falhado.
 
 ---
 
-## Principais métodos HTTP:  
+## Principais métodos HTTP (Os mais importantes)
 
-### GET – Buscar informações  
-
-O método **GET** é usado para **consultar dados**.  
-
-📌 Características:   
-- Não altera dados no servidor.  
-- Não possui body (na maioria dos casos). 
-- Pode ser repetido sem causar efeitos colaterais.  
-
-📌 Exemplos reais em suporte:  
-- Buscar lista de clientes  
-- Consultar pedidos  
-- Abrir uma tela de cadastro já existente.  
-
-📌 Exemplo:   
-```http
-GET /api/clientes/123 HTTP/1.1 
-Host: api.sistema.com 
-Authorization: Bearer token_valido 
-```
-
-📌 Erros comuns:  
-
-401 (token inválido)  
-404 (ID não encontrado)  
-
-POST – Criar um novo recurso  
-O método POST é usado para criar dados novos no servidor.  
-
-📌 Características:  
-
-Envia informações no body.  
-Pode gerar duplicidade se chamado mais de uma vez.  
-Muito usado em formulários.  
-
-📌 Exemplos reais em suporte:  
-
-Criar cliente.  
-Criar pedido.  
-Enviar formulário.   
-
-📌 Exemplo:   
-
-```http
-POST /api/clientes HTTP/1.1
-Content-Type: application/json
-
-{
-  "nome": "Empresa X",
-  "email": "contato@empresa.com"
-} 
-```
-📌 Erros comuns:   
-
-400 (campo obrigatório ausente).  
-409 (registro já existe).  
-
-PUT – Atualizar um recurso por completo:  
-O método PUT é usado para atualizar totalmente um recurso existente.  
-
-📌 Características:  
-
-Normalmente exige todos os campos.
-Substitui o recurso anterior.
-
-📌 Exemplos reais em suporte:
-
-Atualizar cadastro completo.
-Substituir configurações.
-
-📌 Exemplo: 
-
-```http
-PUT /api/clientes/123 HTTP/1.1
-Content-Type: application/json
-
-{
-  "nome": "Empresa X", 
-  "email": "novo@email.com", 
-  "ativo": true
-} 
-```
-
-📌 Erros comuns: 
-
-400 (campo ausente).
-404 (ID não existe).
-
-PATCH – Atualizar parcialmente um recurso 
-O método PATCH é usado para atualizações parciais. 
-
-📌 Características:
-
-Atualiza apenas os campos enviados. 
-Mais flexível que PUT. 
-
-📌 Exemplos reais em suporte:
-
-Alterar status 
-Atualizar apenas email ou telefone. 
-
-📌 Exemplo: 
-
-```http
-
-PATCH /api/clientes/123 HTTP/1.1 
-Content-Type: application/json 
-
-{
-  "ativo": false 
-} 
-```   
-
-📌 Erros comuns:   
-
-400 (campo inválido)  
-403 (sem permissão para alterar).  
-
-DELETE – Remover um recurso  
-O método DELETE é usado para excluir dados.   
-
-📌 Características:  
-
-Pode ser reversível ou não (depende da regra de negócio).
-Nem sempre remove fisicamente (soft delete).
-
-📌 Exemplos reais em suporte:
-
-Excluir usuário.  
-Cancelar pedido.  
-Inativar cadastro.  
-
-📌 Exemplo:  
-
-```http
-DELETE /api/clientes/123 HTTP/1.1
-Authorization: Bearer token_valido
-
-📌 Erros comuns:   
-
-403 (sem permissão)  
-404 (ID inexistente)  
-
-Relação dos métodos HTTP com chamados de suporte:
-Situação do chamado	  ___________       Método envolvido
-Tela não carrega dados	________________GET
-Erro ao salvar formulário	______________POST
-Falha ao atualizar cadastro	____________PUT / PATCH
-Erro ao excluir registro	______________DELETE
-
-Entender isso ajuda o suporte a:
-
-Investigar corretamente.  
-Reproduzir o erro.  
-Comunicar melhor com o time técnico.  
-
-Conclusão:  
-Os métodos HTTP definem o tipo de ação realizada em uma aplicação.
-
-Para suporte, compreender os métodos significa:
-
-Diagnosticar problemas com mais precisão.  
-Evitar análises superficiais.  
-Atuar de forma mais técnica e segura.  
-
-Esse conhecimento é essencial para quem trabalha com aplicações web, APIs e integrações.
-
+| Verbo | Para que serve | Exemplo Real | Idempotente? |
+| :--- | :--- | :--- | :--- |
+| **GET** | Buscar dados | Ver saldo da conta | Sim |
+| **POST** | Criar algo | Cadastrar novo cliente | Não |
+| **PUT** | Atualizar tudo | Alterar cadastro completo | Sim |
+| **PATCH** | Atualizar parte | Alterar apenas o e-mail | Não |
+| **DELETE** | Remover | Excluir uma conta | Sim |
 
 ---
+
+### 🔍 Detalhamento Técnico:
+
+#### GET – Buscar informações
+Usado estritamente para consulta.
+* **📌 Erros comuns:** `404` (ID pesquisado não existe) ou `401` (sessão expirada).
+
+#### POST – Criar um novo recurso
+Envia dados no corpo (body) da requisição para criar algo novo.
+* **📌 Erros comuns:** `400` (falta de campos obrigatórios) ou `409` (conflito/duplicidade).
+
+#### PUT vs PATCH – Atualizações
+* **PUT:** Substitui o recurso inteiro. Se você esquecer um campo, ele pode ser apagado ou ficar em branco.
+* **PATCH:** Altera apenas o que foi enviado. É mais seguro para atualizações rápidas.
+
+#### DELETE – Remover um recurso
+Solicita a exclusão de um registro.
+* **📌 Nota de Suporte:** Muitos sistemas usam "Soft Delete", onde o dado é apenas desativado, mas o método HTTP continua sendo o DELETE.
+
+---
+
+## 🛠️ Relação com chamados de Suporte
+
+| Situação do Chamado | Método Envolvido |
+| :--- | :--- |
+| Tela de listagem não carrega dados | **GET** |
+| Erro ao clicar em "Salvar Novo" | **POST** |
+| Cadastro não atualiza após edição | **PUT / PATCH** |
+| Erro ao tentar cancelar/excluir | **DELETE** |
+
+---
+*Este documento ajuda o suporte a reproduzir o erro exatamente como o cliente o gerou.*

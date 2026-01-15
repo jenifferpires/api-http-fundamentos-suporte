@@ -2,151 +2,54 @@
 
 ## O que são Status Codes?
 
-Os **Status Codes HTTP** são códigos numéricos retornados pelo servidor para indicar o **resultado de uma requisição**.
-
-Eles permitem que o cliente (app, navegador, sistema) saiba se a requisição:
-- Foi bem-sucedida
-- Teve erro
-- Não pôde ser processada
-
-Para suporte técnico, os status codes são uma das **principais pistas de diagnóstico**.
+Os **Status Codes HTTP** são códigos numéricos retornados pelo servidor para indicar o **resultado de uma requisição**. Para o suporte técnico, eles funcionam como o "RG" do problema: dizem imediatamente se a falha é de quem pediu (Cliente) ou de quem processou (Servidor).
 
 ---
 
-## Categorias de Status Codes
+## 🚦 Categorias e Ações de Suporte:
 
-Os códigos HTTP são agrupados por categoria:
-
-| Categoria | Significado geral |
-|--------|------------------|
-| 2xx | Sucesso |
-| 3xx | Redirecionamento |
-| 4xx | Erro do cliente (requisição) |
-| 5xx | Erro do servidor (backend) |
+| Categoria | Significado | Quem errou? | Ação Sugerida |
+| :--- | :--- | :--- | :--- |
+| **2xx** | Sucesso | Ninguém | Validar se o dado refletiu na tela/UI. |
+| **3xx** | Redirecionamento | - | Verificar se a URL ou ambiente estão corretos. |
+| **4xx** | Erro do Cliente | O Cliente/App | Validar dados, tokens e permissões enviados. |
+| **5xx** | Erro do Servidor | O Sistema/Infra | Acionar time técnico ou verificar logs. |
 
 ---
 
-## 2xx – Sucesso
+## 🔍 Detalhamento por Categoria:
 
-Indicam que a requisição foi processada corretamente.
+### 🟢 2xx – Sucesso
+* **200 OK:** Sucesso total.
+* **201 Created:** Sucesso na criação (comum após um POST).
+* **💡 Insight de Suporte:** Se o status é 2xx mas a tela não mostra o que deveria, o problema é no **Front-end** (exibição) e não na API.
 
-### Exemplos comuns:
+### 🟡 4xx – Erro do Cliente (Foco no Payload/Acesso)
+Estes são os mais comuns em chamados de integração:
+* **400 Bad Request:** Dados inválidos ou faltando (ex: e-mail sem @).
+* **401 Unauthorized:** Problema de autenticação (Token inválido ou expirado).
+* **403 Forbidden:** O usuário logou, mas não tem o "perfil" necessário para aquela ação.
+* **404 Not Found:** O recurso não existe (ID inválido) ou a URL está errada.
 
-- **200 OK**  
-Requisição executada com sucesso.
-
-- **201 Created**  
-Recurso criado com sucesso (muito comum em POST).
-
-📌 Em suporte:
-> Se o cliente recebe 2xx mas relata erro visual, o problema **geralmente está na interface**, não na API.
-
----
-
-## 3xx – Redirecionamento
-
-Indicam que a requisição precisa seguir outro caminho.
-
-- **301 / 302** – Redirecionamento permanente ou temporário
-
-📌 Em suporte:
-- Muito comum em problemas de ambiente (URL errada, redirecionamento inesperado).
+### 🔴 5xx – Erro do Servidor (Foco na Infra/Código)
+Indica que o pedido foi correto, mas o sistema falhou:
+* **500 Internal Server Error:** O backend "travou" ou deu erro de código.
+* **502 / 504 Gateway Timeout:** O servidor demorou muito para responder ou está fora do ar.
+* **💡 Insight de Suporte:** Estes erros exigem a coleta de **Logs** para o time de desenvolvimento.
 
 ---
 
-## 4xx – Erro do cliente (requisição)
 
-Indicam que **algo enviado pelo cliente está incorreto**.
 
-### Os mais comuns em suporte:
+## 📝 Exemplo de Diagnóstico em Suporte:s
 
-- **400 Bad Request**  
-Dados inválidos, campos ausentes ou formato incorreto.
+**Cenário:** Cliente tenta cadastrar um novo usuário e recebe **400 Bad Request**.
 
-- **401 Unauthorized**  
-Problema de autenticação (token inválido ou expirado).
-
-- **403 Forbidden**  
-Usuário autenticado, mas sem permissão.
-
-- **404 Not Found**  
-Recurso ou endpoint inexistente.
-
-📌 Leitura correta em suporte:
-> Erros 4xx normalmente indicam que **o backend recebeu a requisição**, mas **não conseguiu processá-la por erro no que foi enviado**.
+**Análise técnica:**
+1. Verificamos o método: `POST`.
+2. Verificamos o body enviado: O campo `nome` estava vazio.
+3. **Conclusão:** Não é um bug do sistema. É um erro de preenchimento.
+4. **Ação:** Orientar o cliente a preencher o campo obrigatório.
 
 ---
-
-## 5xx – Erro do servidor (backend)
-
-Indicam que **a requisição está correta**, mas o servidor falhou ao processá-la.
-
-### Os mais comuns:
-
-- **500 Internal Server Error**  
-Erro genérico no backend.
-
-- **502 Bad Gateway**  
-Falha de comunicação entre serviços.
-
-- **503 Service Unavailable**  
-Serviço indisponível ou sobrecarregado.
-
-📌 Leitura correta em suporte:
-> Erros 5xx indicam falha interna e geralmente precisam de análise do time técnico ou infraestrutura.
-
----
-
-## Diferença prática: 400 x 500
-
-| Código | Onde está o problema? |
-|-----|----------------------|
-| 400 | Na requisição enviada |
-| 500 | No servidor / backend |
-
-Essa distinção é fundamental para:
-- Direcionar corretamente o chamado
-- Evitar retrabalho
-- Comunicar melhor com cliente e desenvolvimento
-
----
-
-## Exemplo real de suporte:
-
-### Requisição
-
-```http
-POST /api/clientes HTTP/1.1
-Content-Type: application/json
-
-{
-  "email": "cliente@empresa.com"
-}
-
-
-```
-Resposta
-```http
-400 Bad Request
-```
-
-📌 Diagnóstico:  
-
-Campo obrigatório ausente (nome).  
-Erro no payload enviado.  
-
-Conclusão:  
-Os status codes HTTP são uma das ferramentas mais importantes para suporte técnico. 
-
-Eles permitem:  
-
-Diagnóstico rápido.  
-
-Identificação da origem do erro.  
-
-Comunicação clara com o cliente e com o time técnico.  
-
-Entender status codes é essencial para atuar com aplicações web, APIs e integrações.
-
-
----
+*Dominar os status codes reduz drasticamente o tempo de diagnóstico e evita escalonamentos desnecessários para o time de desenvolvimento.*

@@ -97,10 +97,11 @@ Demonstra exemplos reais de requisição:
 - Exemplo prático em Python
 
 Arquivos:
-- `exemplo-request.md`
-- `exemplo-request.py`
+- `guia-definitivo-apis.md` (Guia mestre de conceitos e diagnóstico)
+- `exemplo-request.md` (Documentação de uma chamada real)
+- `exemplo-request.py` (Script de automação/teste)
 
-Este módulo conecta teoria e prática, como acontece no dia a dia do suporte.
+Este módulo conecta teoria e prática, consolidando o conhecimento para o dia a dia.
 
 ---
 

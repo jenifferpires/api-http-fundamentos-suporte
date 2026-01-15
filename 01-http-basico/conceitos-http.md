@@ -74,12 +74,11 @@ Esse é exatamente o papel do suporte: **identificar onde está a falha**.
 ## O que o HTTP define?
 
 O protocolo HTTP define:
-
-- Como uma requisição deve ser feita
-- Quais métodos podem ser usados (GET, POST, PUT, etc.)
-- Como o servidor deve responder
-- Como os dados são enviados e recebidos
-- Como identificar sucesso ou erro através de códigos de status
+- **Estrutura:** Como uma requisição deve ser montada.
+- **Verbos:** Quais métodos podem ser usados (GET para buscar, POST para criar, etc.).
+- **Segurança:** O uso de HTTPS para garantir que os dados trafeguem de forma criptografada.
+- **Formato:** Como os dados são transportados (atualmente, o JSON é o padrão mais comum em APIs).
+- **Status:** Como identificar o resultado através de códigos (2xx para sucesso, 4xx/5xx para erros).
 
 ---
 
